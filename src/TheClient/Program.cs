@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
+using Microsoft.Extensions.Configuration;
 using System.Net;
 using TheAbstraction;
 
@@ -13,9 +14,15 @@ const string header = @"
 ";
 Console.WriteLine(header);
 
+var builder = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json", optional: false);
+IConfiguration config = builder.Build();
+var baseUrl = config.GetSection("ApiSettings").Get<ApiSettings>().BaseUrl!;
+
 
 HubConnection connection = new HubConnectionBuilder()
-    .WithUrl("https://localhost:55748/messages", options => options.Credentials = CredentialCache.DefaultCredentials)
+    .WithUrl(new Uri(new Uri(baseUrl), "messages").AbsoluteUri, options => options.Credentials = CredentialCache.DefaultCredentials)
     .WithAutomaticReconnect()
     .Build();
 
@@ -26,8 +33,13 @@ connection.On<string, string>(nameof(IMessageHubClient.NewMessage), (id, message
 await connection.StartAsync();
 
 string? input = Console.ReadLine();
-while(input is not null && input is not "quit")
+while (input is not null && input is not "quit")
 {
     await connection.SendAsync(MessageHubMethods.Message, input);
     input = Console.ReadLine();
+}
+
+class ApiSettings
+{
+    public string? BaseUrl { get; set; }
 }
