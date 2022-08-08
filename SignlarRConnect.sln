@@ -3,11 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheServer", "src\TheServer\TheServer.csproj", "{3EC597E7-C236-47B9-8470-3EA93B195CE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheServer", "src\TheServer\TheServer.csproj", "{3EC597E7-C236-47B9-8470-3EA93B195CE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheAbstraction", "src\TheAbstraction\TheAbstraction.csproj", "{FECE4740-1598-4DA3-9064-69A619A950D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheAbstraction", "src\TheAbstraction\TheAbstraction.csproj", "{FECE4740-1598-4DA3-9064-69A619A950D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheClient", "src\TheClient\TheClient.csproj", "{3E35316E-DCAF-41F1-A858-56D3DE433960}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheClient", "src\TheClient\TheClient.csproj", "{3E35316E-DCAF-41F1-A858-56D3DE433960}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "misc", "misc", "{1DE5DEEE-F685-4DAF-AE7C-90B34E3C3C67}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		readme.md = readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
