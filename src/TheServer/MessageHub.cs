@@ -19,5 +19,5 @@ public sealed class MessageHub : Hub<IMessageHubClient>
 
     [HubMethodName(MessageHubMethods.Message)]
     public async Task Message(string message)
-        => await Clients.AllExcept(Context.ConnectionId).NewMessage(Context.ConnectionId, message);
+        => await Clients.Others.NewMessage(Context.ConnectionId, message);
 }
