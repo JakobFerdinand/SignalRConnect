@@ -1,13 +1,6 @@
-﻿using Microsoft.Extensions.Hosting.WindowsServices;
-using TheServer;
+﻿using TheServer;
 
-WebApplicationOptions options = new()
-{
-    Args = Array.Empty<string>(),
-    ContentRootPath = WindowsServiceHelpers.IsWindowsService() ? AppContext.BaseDirectory : default
-};
-
-var builder = WebApplication.CreateBuilder(options);
+var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSignalR();
 
 var app = builder.Build();
