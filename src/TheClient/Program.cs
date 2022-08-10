@@ -30,6 +30,7 @@ connection.On<string>(nameof(IMessageHubClient.OnJoined), id => Console.WriteLin
 connection.On<string>(nameof(IMessageHubClient.OnLeft), id => Console.WriteLine($"{id} left."));
 connection.On<string, string>(nameof(IMessageHubClient.NewMessage), (id, message) => Console.WriteLine($"{id}: {message}"));
 
+Console.WriteLine($"Connecting to {baseUrl}");
 await connection.StartAsync();
 
 string? input = Console.ReadLine();
